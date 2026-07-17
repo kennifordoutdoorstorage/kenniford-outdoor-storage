@@ -1,26 +1,42 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Palette derived from the Kenniford logo:
+     - Logo background is a soft powder blue: #c7dbe5
+     - Text on logo is charcoal, caravan is cream, grass is soft green
+     We use the logo blue as the hero/atmosphere colour, a deeper
+     sea-blue for CTAs and accents, and warm off-white for the body. */
+  --background: #f7fafc;
+  --foreground: #1a2733;
+  --primary: #2c5f7c;
+  --primary-hover: #22506a;
+  --logo-bg: #c7dbe5;
+  --logo-bg-soft: #d9e6ee;
+  --muted: #5d6d78;
+  --border: #dee6ec;
+  --card: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-logo-bg: var(--logo-bg);
+  --color-logo-bg-soft: var(--logo-bg-soft);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
