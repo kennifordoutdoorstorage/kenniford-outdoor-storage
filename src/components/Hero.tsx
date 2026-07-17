@@ -24,7 +24,7 @@ export default function Hero() {
           Secure caravan storage on the doorstep of the M5.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--foreground)]/75 sm:text-xl">
-          {businessConfig.tagline} — hardstanding pitches, CCTV coverage, and 24/7 gated access.
+          {businessConfig.tagline} — hardstanding pitches, CCTV coverage, and gated access 7am – 8pm.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a

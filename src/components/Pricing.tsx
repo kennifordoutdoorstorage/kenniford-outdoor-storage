@@ -3,17 +3,15 @@
 import { useState } from "react";
 import { businessConfig } from "@/lib/config";
 
-type Duration = "weekly" | "3-monthly" | "6-monthly" | "yearly";
+type Duration = "3-monthly" | "6-monthly" | "yearly";
 
 const durationLabels: Record<Duration, string> = {
-  weekly: "Weekly",
   "3-monthly": "3 months",
   "6-monthly": "6 months",
   yearly: "Yearly",
 };
 
 const durationPeriodShort: Record<Duration, string> = {
-  weekly: "per week",
   "3-monthly": "for 13 weeks",
   "6-monthly": "for 26 weeks",
   yearly: "per year",
@@ -29,7 +27,6 @@ const tiers: Array<{
     name: "Small",
     for: "Up to 6.99m × 3.5m",
     prices: {
-      weekly: "£9",
       "3-monthly": "£117",
       "6-monthly": "£234",
       yearly: "£468",
@@ -40,7 +37,6 @@ const tiers: Array<{
     name: "Medium",
     for: "Caravans 7m and above × 3.5m",
     prices: {
-      weekly: "£10",
       "3-monthly": "£130",
       "6-monthly": "£260",
       yearly: "£520",
@@ -51,7 +47,6 @@ const tiers: Array<{
     name: "Large",
     for: "Boats & motorhomes, 7m and above × 3.5m",
     prices: {
-      weekly: "£11",
       "3-monthly": "£143",
       "6-monthly": "£286",
       yearly: "£572",
@@ -60,7 +55,7 @@ const tiers: Array<{
   },
 ];
 
-const durationOrder: Duration[] = ["weekly", "3-monthly", "6-monthly", "yearly"];
+const durationOrder: Duration[] = ["3-monthly", "6-monthly", "yearly"];
 
 export default function Pricing() {
   const [duration, setDuration] = useState<Duration>("yearly");
@@ -76,8 +71,8 @@ export default function Pricing() {
             Simple, honest pricing.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-[var(--muted)]">
-            Pay weekly, quarterly, half-yearly, or annually — whichever suits
-            you. Pitches are 3.5m wide, all-inclusive.
+            Pay quarterly, half-yearly, or annually — whichever suits you.
+            Pitches are 3.5m wide, all-inclusive.
           </p>
           <p className="mt-2 text-sm font-medium text-[var(--primary)]">
             All prices include VAT.
