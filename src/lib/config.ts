@@ -10,11 +10,11 @@ export const businessConfig = {
     postcode: "EX5 1AQ",
   },
   addressFormatted: "Kenniford Farm, Clyst St Mary, Exeter, Devon, EX5 1AQ",
-  email: "kennifordoutdoorstorage@gmail.com",
+  email: "storage@kennifordfarm.com",
   phone: "01392 875938",
   keyFobDeposit: "£10.00",
   openingHours: [
-    { day: "Access", hours: "24/7 for storage customers" },
+    { day: "Access", hours: "7am – 7pm daily, or by prior arrangement" },
     { day: "Enquiries", hours: "Monday – Saturday, 9am – 5pm" },
   ],
 };

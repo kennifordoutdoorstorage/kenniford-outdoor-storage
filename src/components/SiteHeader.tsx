@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { businessConfig } from "@/lib/config";
 
@@ -13,11 +14,32 @@ const navItems = [
 export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--background)]/85 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="font-display text-lg font-semibold text-[var(--primary)]">
-          {businessConfig.name}
-        </Link>
-        <nav className="hidden gap-8 text-sm text-[var(--muted)] md:flex">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+        <div className="flex items-center gap-3">
+          <a
+            href="https://www.cassoa.co.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="CaSSOA Silver Award — Caravan Storage Site Owners' Association"
+            className="flex items-center"
+          >
+            <Image
+              src="/photos/SilverCertificateLogo.jpg"
+              alt="CaSSOA Silver Award"
+              width={480}
+              height={160}
+              className="h-9 w-auto sm:h-10"
+              priority
+            />
+          </a>
+          <Link
+            href="/"
+            className="hidden font-display text-lg font-semibold text-[var(--primary)] sm:inline-block"
+          >
+            {businessConfig.name}
+          </Link>
+        </div>
+        <nav className="hidden gap-6 text-sm text-[var(--muted)] lg:flex">
           {navItems.map((item) => (
             <a
               key={item.href}

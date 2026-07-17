@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import Intro from "@/components/Intro";
+import CassoaSection from "@/components/CassoaSection";
 import WhatWeStore from "@/components/WhatWeStore";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Gallery from "@/components/Gallery";
@@ -16,6 +17,7 @@ export default function Home() {
       <main id="main" className="flex-1">
         <Hero />
         <Intro />
+        <CassoaSection />
         <WhatWeStore />
         <WhyChooseUs />
         <Gallery />

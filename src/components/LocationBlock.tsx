@@ -53,12 +53,12 @@ export default function LocationBlock() {
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-[var(--border)]">
-            {/* Hard-coded coordinates from Google Maps for EX5 1AQ.
-                Using lat,lng as the query drops a pin at the exact
-                spot — more reliable than fuzzy address geocoding. */}
+            {/* Pin coordinates: 50°41'53.8"N 3°25'59.9"W
+                (decimal 50.6982778, -3.4333056). Using lat,lng as the
+                query drops the pin at the exact spot. */}
             <iframe
               title="Kenniford Outdoor Storage location map"
-              src="https://maps.google.com/maps?q=50.701555,-3.4355428&z=16&t=&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=50.6982778,-3.4333056&z=17&t=&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: 380 }}
@@ -66,7 +66,7 @@ export default function LocationBlock() {
               referrerPolicy="no-referrer-when-downgrade"
             />
             <a
-              href="https://www.google.com/maps/place//@50.701555,-3.4355428,15z"
+              href="https://www.google.com/maps/place//@50.6982778,-3.4333056,17z"
               target="_blank"
               rel="noopener noreferrer"
               className="block bg-[var(--card)] px-4 py-2 text-center text-sm font-medium text-[var(--primary)] hover:underline"
