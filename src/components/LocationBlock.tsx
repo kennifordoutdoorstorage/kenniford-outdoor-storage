@@ -26,6 +26,19 @@ export default function LocationBlock() {
                 </dd>
               </div>
               <div>
+                <dt className="font-medium text-[var(--foreground)]">what3words</dt>
+                <dd className="mt-1">
+                  <a
+                    href={`https://what3words.com/${businessConfig.what3words}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--primary)] hover:underline"
+                  >
+                    ///{businessConfig.what3words}
+                  </a>
+                </dd>
+              </div>
+              <div>
                 <dt className="font-medium text-[var(--foreground)]">Email</dt>
                 <dd className="mt-1">
                   <a

@@ -4,14 +4,16 @@ import { useState } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-const VEHICLE_TYPES = ["Unsure", "Caravan", "Motorhome", "Boat", "Car"];
-const VEHICLE_SIZES = ["Unsure", "Small", "Medium", "Large"];
+const VEHICLE_TYPES = ["Caravan", "Motorhome", "Boat", "Car", "Other"];
+const VEHICLE_SIZES = ["Small", "Medium", "Large", "Other"];
 
 export default function EnquiryForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [vehicleType, setVehicleType] = useState<string>("");
+  const [vehicleTypeOther, setVehicleTypeOther] = useState<string>("");
   const [vehicleSize, setVehicleSize] = useState<string>("");
+  const [vehicleSizeOther, setVehicleSizeOther] = useState<string>("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -19,12 +21,22 @@ export default function EnquiryForm() {
     setErrorMsg("");
 
     const formData = new FormData(e.currentTarget);
+    // If "Other" is selected, use the free-text value in the payload
+    // instead of the literal string "Other".
+    const typeValue =
+      vehicleType === "Other" && vehicleTypeOther.trim()
+        ? `Other: ${vehicleTypeOther.trim()}`
+        : vehicleType;
+    const sizeValue =
+      vehicleSize === "Other" && vehicleSizeOther.trim()
+        ? `Other: ${vehicleSizeOther.trim()}`
+        : vehicleSize;
     const payload = {
       name: formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
-      vehicleType,
-      vehicleSize,
+      vehicleType: typeValue,
+      vehicleSize: sizeValue,
       message: formData.get("message"),
     };
 
@@ -38,7 +50,9 @@ export default function EnquiryForm() {
       setStatus("sent");
       (e.target as HTMLFormElement).reset();
       setVehicleType("");
+      setVehicleTypeOther("");
       setVehicleSize("");
+      setVehicleSizeOther("");
     } catch {
       setStatus("error");
       setErrorMsg("Something went wrong. Please email or call us directly.");
@@ -85,18 +99,24 @@ export default function EnquiryForm() {
 
             <Field label="Email" name="email" type="email" required />
 
-            <ChipGroup
+            <ChipGroupWithOther
               label="Vehicle type"
               options={VEHICLE_TYPES}
               selected={vehicleType}
               onSelect={setVehicleType}
+              otherValue={vehicleTypeOther}
+              onOtherChange={setVehicleTypeOther}
+              otherPlaceholder="Please tell us what you're storing"
             />
 
-            <ChipGroup
+            <ChipGroupWithOther
               label="Vehicle size"
               options={VEHICLE_SIZES}
               selected={vehicleSize}
               onSelect={setVehicleSize}
+              otherValue={vehicleSizeOther}
+              onOtherChange={setVehicleSizeOther}
+              otherPlaceholder="Please give approximate dimensions"
             />
 
             <div className="flex flex-col gap-2">
@@ -107,7 +127,7 @@ export default function EnquiryForm() {
                 id="message"
                 name="message"
                 rows={4}
-                placeholder="Anything else we should know — dimensions, preferred start date, questions..."
+                placeholder="Anything else we should know — preferred start date, questions..."
                 className="rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-3 text-[var(--foreground)] focus:border-[var(--primary)] focus:outline-none"
               />
             </div>
@@ -158,17 +178,24 @@ function Field({
   );
 }
 
-function ChipGroup({
+function ChipGroupWithOther({
   label,
   options,
   selected,
   onSelect,
+  otherValue,
+  onOtherChange,
+  otherPlaceholder,
 }: {
   label: string;
   options: string[];
   selected: string;
   onSelect: (value: string) => void;
+  otherValue: string;
+  onOtherChange: (value: string) => void;
+  otherPlaceholder: string;
 }) {
+  const showOther = selected === "Other";
   return (
     <div className="flex flex-col gap-2">
       <span className="text-sm font-medium text-[var(--foreground)]">
@@ -193,6 +220,15 @@ function ChipGroup({
           );
         })}
       </div>
+      {showOther && (
+        <input
+          type="text"
+          value={otherValue}
+          onChange={(e) => onOtherChange(e.target.value)}
+          placeholder={otherPlaceholder}
+          className="mt-1 rounded-lg border border-[var(--border)] bg-[var(--background)] px-4 py-3 text-[var(--foreground)] focus:border-[var(--primary)] focus:outline-none"
+        />
+      )}
     </div>
   );
 }

@@ -13,8 +13,9 @@ export const businessConfig = {
   email: "storage@kennifordfarm.com",
   phone: "01392 875938",
   keyFobDeposit: "£10.00",
+  what3words: "info.waving.deeds",
   openingHours: [
-    { day: "Access", hours: "7am – 7pm daily, or by prior arrangement" },
+    { day: "Access", hours: "7am – 8pm daily, or by prior arrangement" },
     { day: "Enquiries", hours: "Monday – Saturday, 9am – 5pm" },
   ],
 };
