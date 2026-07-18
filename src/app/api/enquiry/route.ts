@@ -71,7 +71,10 @@ export async function POST(request: NextRequest) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: process.env.RESEND_FROM ?? "enquiries@kennifordoutdoorstorage.com",
+          // Default to Resend's built-in sender so the free tier
+          // works without a verified domain. Once we own a domain
+          // and verify it, override with RESEND_FROM in Vercel env.
+          from: process.env.RESEND_FROM ?? "Kenniford Enquiries <onboarding@resend.dev>",
           to: businessConfig.email,
           reply_to: email,
           subject: `New enquiry from ${name} (${vehicleType || "vehicle unspecified"})`,
