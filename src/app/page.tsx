@@ -5,6 +5,7 @@ import WhatWeStore from "@/components/WhatWeStore";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Gallery from "@/components/Gallery";
 import Pricing from "@/components/Pricing";
+import FAQ from "@/components/FAQ";
 import EnquiryForm from "@/components/EnquiryForm";
 import LocationBlock from "@/components/LocationBlock";
 import SiteHeader from "@/components/SiteHeader";
@@ -22,6 +23,7 @@ export default function Home() {
         <WhyChooseUs />
         <Gallery />
         <Pricing />
+        <FAQ />
         <EnquiryForm />
         <LocationBlock />
       </main>
