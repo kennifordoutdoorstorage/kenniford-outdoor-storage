@@ -79,7 +79,7 @@ export default function PrivacyPage() {
               your cookie-preference choice.
             </p>
             <p>
-              The <strong>Location</strong> section can display an embedded
+              The <strong>Location</strong>{" "}section can display an embedded
               Google Map. Google Maps is a third-party service that may set
               cookies of its own. We do not load the Google Map until you have
               accepted cookies via the notice at the bottom of the site. If you
